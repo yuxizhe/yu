@@ -1,0 +1,111 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 复杂Pdf前端自动生成 · DappWind</title><meta name="description" content="复杂Pdf前端自动生成 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">复杂Pdf前端自动生成</h1><div class="post-info">May 2, 2018</div><div class="post-content"><h1 id="复杂pdf前端自动生成"><a href="#复杂pdf前端自动生成" class="headerlink" title="复杂pdf前端自动生成"></a>复杂pdf前端自动生成</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>私募每月要生成近200份基金月报，每个月报上图表很多，运营手工制作枯燥且时间来不及。想要个自动生成pdf月报的功能。</p>
+<blockquote>
+<p>月报例子</p>
+</blockquote>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="1-页面截图-再生成pdf"><a href="#1-页面截图-再生成pdf" class="headerlink" title="1.页面截图 再生成pdf"></a>1.页面截图 再生成pdf</h2><p>html2canvas</p>
+<blockquote>
+<p>官网 <a href="https://html2canvas.hertzen.com/" target="_blank" rel="noopener">https://html2canvas.hertzen.com/</a></p>
+</blockquote>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>简单，百度中文教程多</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>pdf文字不可选，多页样式有问题</p>
+<h2 id="2-PDFKit"><a href="#2-PDFKit" class="headerlink" title="2.PDFKit"></a>2.PDFKit</h2><p>A JavaScript PDF generation library for Node and the browser.</p>
+<blockquote>
+<p>官网  <a href="http://pdfkit.org/" target="_blank" rel="noopener">http://pdfkit.org/</a></p>
+</blockquote>
+<blockquote>
+<p>例子  <a href="http://pdfkit.org/demo/browser.html" target="_blank" rel="noopener">http://pdfkit.org/demo/browser.html</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create a document and pipe to a blob</span></span><br><span class="line"><span class="keyword">var</span> doc = <span class="keyword">new</span> PDFDocument();</span><br><span class="line"><span class="keyword">var</span> stream = doc.pipe(blobStream());</span><br><span class="line"></span><br><span class="line"><span class="comment">// draw some text</span></span><br><span class="line">doc.fontSize(<span class="number">25</span>)</span><br><span class="line">   .text(<span class="string">'Here is some vector graphics...'</span>, <span class="number">100</span>, <span class="number">80</span>);</span><br><span class="line">   </span><br><span class="line"><span class="comment">// some vector graphics</span></span><br><span class="line">doc.save()</span><br><span class="line">   .moveTo(<span class="number">100</span>, <span class="number">150</span>)</span><br><span class="line">   .lineTo(<span class="number">100</span>, <span class="number">250</span>)</span><br><span class="line">   .lineTo(<span class="number">200</span>, <span class="number">250</span>)</span><br><span class="line">   .fill(<span class="string">"#FF3300"</span>);</span><br><span class="line">   </span><br><span class="line">doc.circle(<span class="number">280</span>, <span class="number">200</span>, <span class="number">50</span>)</span><br><span class="line">   .fill(<span class="string">"#6600FF"</span>);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><p>样式好看，支持svg等。</p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p>需要单独写代码，不通用，图表不好加。</p>
+<h1 id="3-phantomjs"><a href="#3-phantomjs" class="headerlink" title="3.phantomjs"></a>3.phantomjs</h1><p>PhantomJS是一个无界面的,可脚本编程的WebKit浏览器引擎。它原生支持多种web 标准：DOM 操作，CSS选择器，JSON，Canvas 以及SVG。</p>
+<blockquote>
+<p>官网 <a href="http://phantomjs.org/" target="_blank" rel="noopener">http://phantomjs.org/</a></p>
+</blockquote>
+<p>安装比较麻烦，要手动下载，配置环境变量。</p>
+<blockquote>
+<p>alias phantomjs=’~/PATH/TO/phantomjs’</p>
+</blockquote>
+<p>使用它自己的命令行操作。虽然有个npm的版本，但是样式有问题。</p>
+<p>生成pdf的官方例子</p>
+<blockquote>
+<p>例子 <a href="https://github.com/ariya/phantomjs/blob/master/examples/rasterize.js" target="_blank" rel="noopener">https://github.com/ariya/phantomjs/blob/master/examples/rasterize.js</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">page.viewportSize = &#123; <span class="attr">width</span>: <span class="number">600</span>, <span class="attr">height</span>: <span class="number">600</span> &#125;;</span><br><span class="line">    <span class="keyword">if</span> (system.args.length &gt; <span class="number">3</span> &amp;&amp; system.args[<span class="number">2</span>].substr(<span class="number">-4</span>) === <span class="string">".pdf"</span>) &#123;      size = system.args[<span class="number">3</span>].split(<span class="string">'*'</span>);</span><br><span class="line">        page.paperSize = size.length === <span class="number">2</span> ? &#123; <span class="attr">width</span>: size[<span class="number">0</span>], <span class="attr">height</span>: size[<span class="number">1</span>], <span class="attr">margin</span>: <span class="string">'0px'</span> &#125; : &#123; <span class="attr">format</span>: system.args[<span class="number">3</span>], <span class="attr">orientation</span>: <span class="string">'portrait'</span>, <span class="attr">margin</span>: <span class="string">'1cm'</span> &#125;;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>命令格式 为 </p>
+<p>路径 + 配置js + 目标url + 保存文件名 + 页面参数</p>
+<p>路径设置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> phantomjs = <span class="string">'/Users/yu/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs'</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">'http://localhost:8080/#/monthPaper'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">  phantomjs = <span class="string">'/home/app/yuxizhe/phantomjs-2.1.1-linux-x86_64/bin/phantomjs'</span></span><br><span class="line">  </span><br><span class="line">  url = <span class="string">'http://localhost:7878/#/monthPaper'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>需要手动设置页面px参数，要不然截不全</p>
+<p>获取不到页面渲染完成的状态<br>官方例子中的 status === ‘success’  只是页面加载成o<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">page.open(address, <span class="function"><span class="keyword">function</span> (<span class="params">status</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (status !== <span class="string">'success'</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'Unable to load the address!'</span>);</span><br><span class="line">            phantom.exit(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">window</span>.setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                page.render(output);</span><br><span class="line">                phantom.exit();</span><br><span class="line">            &#125;, <span class="number">200</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><p>生成的pdf文字可选，较成熟</p>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><p>安装配置不方便，运行要调用子进程，需要手动设置页面大小，无法获知是否渲染完成，在私募不可用</p>
+<h1 id="4-puppeteer-ˌpvpɪˈtɪr"><a href="#4-puppeteer-ˌpvpɪˈtɪr" class="headerlink" title="4.puppeteer  [ˌpʌpɪˈtɪr]"></a>4.puppeteer  [ˌpʌpɪˈtɪr]</h1><p>天宇上周介绍的，chrome官方</p>
+<p>安装<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i puppeteer</span><br></pre></td></tr></table></figure></p>
+<p>国内不下载chrome 版本<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i puppeteer-cn</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>国内说明 <a href="https://npm.taobao.org/package/puppeteer-cn" target="_blank" rel="noopener">https://npm.taobao.org/package/puppeteer-cn</a></p>
+</blockquote>
+<p>官方pdf例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch();</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</span><br><span class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://news.ycombinator.com'</span>, &#123;<span class="attr">waitUntil</span>: <span class="string">'networkidle2'</span>&#125;);</span><br><span class="line">  <span class="keyword">await</span> page.pdf(&#123;<span class="attr">path</span>: <span class="string">'hn.pdf'</span>, <span class="attr">format</span>: <span class="string">'A4'</span>&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> browser.close();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<h3 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h3><p>文字可选</p>
+<p>调用puppeteer时，不用配置页面具体px了，只要保证比例是A4就可以</p>
+<p>不用设置setTimeout来等待页面渲染完成，可以配置 waitUntil</p>
+<p>node使用方便</p>
+<h4 id="waitUntil-参数"><a href="#waitUntil-参数" class="headerlink" title="waitUntil 参数"></a>waitUntil 参数</h4><blockquote>
+<p>waitUntil &lt;string|Array<string>&gt; When to consider navigation succeeded, defaults to load. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:</string></p>
+</blockquote>
+<blockquote>
+<p>  load - consider navigation to be finished when the load event is fired.</p>
+</blockquote>
+<blockquote>
+<p>  domcontentloaded - consider navigation to be finished when the DOMContentLoaded event is fired.</p>
+</blockquote>
+<blockquote>
+<p>  networkidle0 - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.</p>
+</blockquote>
+<blockquote>
+<p>  networkidle2 - consider navigation to be finished when there are no more than 2 network connections for at least 500 ms.</p>
+</blockquote>
+<p>本地使用networkidle2，服务器使用networkidle0</p>
+<p>本地使用 networkidle0 会超时，服务器使用 networkidle2 会提前结束</p>
+<h3 id="其他服务器安装报错解决"><a href="#其他服务器安装报错解决" class="headerlink" title="其他服务器安装报错解决"></a>其他服务器安装报错解决</h3><h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/lib/x86_64-linux-gnu/libnss3.so: version `NSS_3.22&apos; not found</span><br><span class="line"></span><br><span class="line">Failed to launch chrome!</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ubuntu16.04 安装chrome 或 chromium无法启动问题解决 <a href="https://blog.csdn.net/qq_22551385/article/details/78172178" target="_blank" rel="noopener">https://blog.csdn.net/qq_22551385/article/details/78172178</a></p>
+</blockquote>
+<p>服务器要安装下 NSS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install --reinstall libnss3</span><br></pre></td></tr></table></figure></p>
+<h4 id="报错-1"><a href="#报错-1" class="headerlink" title="报错"></a>报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error: Failed to launch chrome!</span><br><span class="line">[0428/142657.340238:ERROR:zygote_host_impl_linux.cc(88)] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.</span><br></pre></td></tr></table></figure>
+<p>root 环境下运行要加参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const browser = await puppeteer.launch(&#123;</span><br><span class="line">    args: [&apos;--no-sandbox&apos;]</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="报错-2"><a href="#报错-2" class="headerlink" title="报错"></a>报错</h3><p>服务器超时，默认设置超时为5000。私募最慢的接口要3分钟。。所以要加长些</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">await page.goto(url, &#123;</span><br><span class="line">  waitUntil: waitUntil,</span><br><span class="line">  timeout: 3000000</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="页面设置及调试"><a href="#页面设置及调试" class="headerlink" title="页面设置及调试"></a>页面设置及调试</h1><p>暂时解决分页问题，定义单个页面宽高 794px 1123px</p>
+<p>做到页面web端浏览/生成pdf 复用， 用 @print 配置相应css 某些不显示等等</p>
+<h1 id="服务器字体安装"><a href="#服务器字体安装" class="headerlink" title="服务器字体安装"></a>服务器字体安装</h1><p>因为pdf在服务器生成，所以用的是服务器的字体，有些字体没有，生成出来很不好看</p>
+<blockquote>
+<p>将字体文件夹全部复制到/usr/share/fonts/目录下<br>在终端中依次输入以下三条命令：</p>
+</blockquote>
+<blockquote>
+<p>sudo mkfontscale</p>
+</blockquote>
+<blockquote>
+<p>sudo mkfontdir</p>
+</blockquote>
+<blockquote>
+<p>sudo fc-cache -fv</p>
+</blockquote>
+<h1 id="待解决"><a href="#待解决" class="headerlink" title="待解决"></a>待解决</h1><p>页面内容自动分页</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/05/03/index.html" class="prev">PREV</a><a href="/2018/04/26/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2018/05/02/';
+var disqus_title = '复杂Pdf前端自动生成';
+var disqus_url = 'https://blog.dappwind.com/2018/05/02/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

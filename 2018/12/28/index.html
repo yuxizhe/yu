@@ -1,0 +1,133 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 可视化活动页配置平台 · DappWind</title><meta name="description" content="可视化活动页配置平台 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">可视化活动页配置平台</h1><div class="post-info">Dec 28, 2018</div><div class="post-content"><h1 id="可视化活动页配置平台"><a href="#可视化活动页配置平台" class="headerlink" title="可视化活动页配置平台"></a>可视化活动页配置平台</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>因为活动页的特点，就是要求快速上线，经常修改。我们回想下发布活动页时的情况：</p>
+<p>运营会想:</p>
+<ul>
+<li>我要发布个运营页面，为什么还要看前端的排期？为啥不能自己配置，我要自己改代码。</li>
+<li>我要改个文案，前端怎么两个多小时了还没改好，是不是能力有问题？而且改多了还发急，态度不好。</li>
+</ul>
+<p>前端也会吐槽：</p>
+<ul>
+<li>一个活动页，来回改，改了一遍又一遍，提了十几个PR全是文案修改，项目都部署了好几次。</li>
+</ul>
+<p>造成这一现象的原因就是，现有活动页，页面信息都是前端直接写在项目里，靠发版来修改。或者后端调用数据库，页面变量定义不灵活。而运营活动页会经常修改，有很多重复劳动。</p>
+<p>所以就有当前活动页发布时的痛点：</p>
+<h4 id="1-修改需要改代码"><a href="#1-修改需要改代码" class="headerlink" title="1.修改需要改代码"></a>1.修改需要改代码</h4><p>改动由前端编写代码完成，运营想改不方便。比如嘉年华的宣传页上的嘉宾及演讲内容，每次都要改很多次，浪费很多时间。</p>
+<h4 id="2-结构类似，重复劳动"><a href="#2-结构类似，重复劳动" class="headerlink" title="2.结构类似，重复劳动"></a>2.结构类似，重复劳动</h4><p>专题页，页面相似，前端往往机械劳动。比如之前的保险专题页，页面结构相似，如果每次都重新开发，没有技术含量。</p>
+<h4 id="3-不能实时预览"><a href="#3-不能实时预览" class="headerlink" title="3.不能实时预览"></a>3.不能实时预览</h4><p>客户想预览 必须发版，周期很长。<br>比如有的活动页需要客户审核，就要每次都发线上，客户让修改后要再发版，时效性不好。（比如给丹书铁券大V定制的铁券一号基金宣传页，基金经理看了后，感觉有个文案写错了，或者头像不好看 要换头像）现在都要靠发一次线上来解决。</p>
+<p>所以准备搭建一个 运营活动页配置后台，前期可以通过该后台修改活动页面文案、图片等。后期可直接通过该平台生成并发布活动页。</p>
+<p>目前已在 2019雪球中概活动页 和 中概投票页中使用，帮助采坑，发现了一些bug，后来都修复了。</p>
+<p>做了两个动图，先展示下能实现的功能</p>
+<ul>
+<li>修改专题页</li>
+</ul>
+<p><img src="https://xqimg.imedao.com/167f41b2b80113fd7b7aaca3.gif" alt></p>
+<ul>
+<li>修改嘉年华活动页</li>
+</ul>
+<p><img src="https://xqimg.imedao.com/167f4244597133fdec5e4903.gif" alt></p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h4 id="1-页面结构类似的情况"><a href="#1-页面结构类似的情况" class="headerlink" title="1.页面结构类似的情况"></a>1.页面结构类似的情况</h4><p>比如 活动页、专题页、基金宣传页<br>可以抽离出通用模板，以后再配置活动页，只需在后台新增json就可以实现发布页面</p>
+<h4 id="2-页面数据比较多的情况"><a href="#2-页面数据比较多的情况" class="headerlink" title="2.页面数据比较多的情况"></a>2.页面数据比较多的情况</h4><p>比如 嘉年华宣传页 嘉宾列表、会议时间表等 都很多，可以把数据由前端写死改为json实时数据库，json灵活定义。</p>
+<blockquote>
+<p>使用介绍请直接跳至后面的 <code>编辑后台</code> </p>
+</blockquote>
+<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p><img src="https://xqimg.imedao.com/16a637ba1713a99a3fe1881b.jpg" alt><br>包括3个部分，有一个编辑的后台, 数据存储的数据库和页面渲染的前端项目</p>
+<p>图中间的箭头 传递的是活动页面信息，采用的是json格式的数据。一条json数据就包含了 模板中的全部变量，通过这个数据就可以渲染出一个活动页。</p>
+<p>而要实现这个，就要提取页面模板。所以先说下框架图中的<code>抽取模板</code>部分</p>
+<h2 id="抽取模板"><a href="#抽取模板" class="headerlink" title="抽取模板"></a>抽取模板</h2><p><img src="https://xqimg.imedao.com/16a637c3ad13a5ba3fc46104.jpg" alt></p>
+<p>图上是之前设计师设计的雪球保险活动页，这是4个活动页拼到一起了，每一竖排是一个活动页。因为当时就跟设计师约定好了准备采取了模板的方式，所以活动页结构类似，新配置一个活动页就很方便，一条json数据可以生成一个页面。这是如何实现的呢？</p>
+<h4 id="抽取骨架"><a href="#抽取骨架" class="headerlink" title="抽取骨架"></a>抽取骨架</h4><p><img src="https://xqimg.imedao.com/16a637cf5a53a4033fe5ee65.jpg" alt></p>
+<p>我们可以看到，这4个页面结构类似，我们抽取4个页面相同的骨架图，这个骨架图就是模板，包含了所有不变的内容，而那些会变得内容，我们存在json里。右边这个代码就是json, json是采取  名称：内容 的键值对的数据格式，内容和名称一一对应，每一行都是一个对应关系。</p>
+<h4 id="骨架分配变量名"><a href="#骨架分配变量名" class="headerlink" title="骨架分配变量名"></a>骨架分配变量名</h4><p><img src="https://xqimg.imedao.com/16a637de4e33a5df3fb9ecf0.jpg" alt></p>
+<p>随后，我们要给骨架图中对应的变量分配变量名，就是找到和json数据中的对应关系。</p>
+<p>上面是个头图我们取名为 banner_img 随后是几组保险列表，每一组叫一个section<br>最后是一个底部图 footer_img</p>
+<p>我们能看到在最右侧的json中 能看到这3部分，banner_img 和 footer_img后面的值都是一个网址 以png结尾， 这是个cdn图片资源地址，至于如何生成这个url, 开发了专门的小工具，后面会讲到。</p>
+<p>sections 部分 是个数组，里面有3个，就相当于个子模块</p>
+<h4 id="子模块"><a href="#子模块" class="headerlink" title="子模块"></a>子模块</h4><p><img src="https://xqimg.imedao.com/16a637e396b3a4183fd22eb5.jpg" alt></p>
+<p>右边这个图是抽出其中一个来讲</p>
+<p>这个部分包括一个 小标题 和3个保险卡片</p>
+<p>标题取名为title 对应的是个url资源地址</p>
+<p>卡片部分叫 items</p>
+<p>每个卡片 包括一个图片 标题 价格 按钮等，对应的值在右侧json 绿框中可以看到。</p>
+<h4 id="页面样式-amp-信息"><a href="#页面样式-amp-信息" class="headerlink" title="页面样式&amp;信息"></a>页面样式&amp;信息</h4><p><img src="https://xqimg.imedao.com/16a637eb9143a9d83fe42c44.jpg" alt></p>
+<p>其他的还有些页面样式和信息<br>比如页面背景颜色，卡片背景颜色，文字颜色，微信分享信息，微信分享图等。</p>
+<p>至此一个活动页的json 就定义完了，遇到相似的活动页，我们只要修改下json里面的数据就可以了。</p>
+<h4 id="峰会活动页"><a href="#峰会活动页" class="headerlink" title="峰会活动页"></a>峰会活动页</h4><p><img src="https://xqimg.imedao.com/16a637f232d3a9e33fea3390.jpg" alt></p>
+<p>下面 是另一个应用场景，线下活动页，比如每年的嘉年华，和各种峰会。这些活动页页面信息特别多，而且变动频繁，经常一个活动下来 要改动十几版。使用配置工具，应该会方便很多。</p>
+<p>图中两个活动页 分别是去年的嘉年华和即将举办的中概峰会页面，页面结构大概相似，也可以分为几大块</p>
+<p>然后页面信息有修改的话，只需修改这个json即可。应该是比之前方便了些，因为之前上线一个活动能收到好多修改文案的代码合并请求，现在很少看到了。</p>
+<blockquote>
+<p>总结来说，这个json的提取，即模板的提取，需要我们的设计师们的支持，在设计活动页时，可以按照某个约定好的模板出设计资源，运营同事拿到页面资源后就可以自行配置活动页了。</p>
+</blockquote>
+<h2 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h2><p><img src="https://xqimg.imedao.com/16a637f806039ef13fec34de.jpg" alt><br>接下来简单说下<br>是怎么从json数据生成出一个活动页的<br>采用nodejs 和 nuxt.js<br>nuxt.js 采用vue语法，实现服务端渲染，node服务器直接输出渲染好的活动页，有对搜索引擎友好，加载速度快等优点，然后vue这个框架用起来比较简单，适合做简单交互的活动页，很省事。</p>
+<p><img src="https://xqimg.imedao.com/16a637feeb53a9ed3fd3fa7f.jpg" alt></p>
+<p>左图展示了<br>页面服务端渲染流程，提供了asyncData() 这个函数，用于服务端获取数据，所以，如右侧所示，在这个函数里获取页面数据接口，这个接口也是node写的，通过读取数据库把相应的json数据传过来，有30s的缓存。</p>
+<p>下方是模板渲染代码，可以看到 里面有我们之前定义的变量，页面渲染时，会把json变量里的内容放在页面的相应位置上。实现通过json 渲染一个页面</p>
+<h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><p><img src="https://xqimg.imedao.com/16a63804d563a4403feee10e.jpg" alt></p>
+<p>页面文案和配置信息采用json格式，前端开发人员可灵活定义。<code>文案、css样式、图片链接</code>都可以自由定义。数据存储采用 json格式转string格式存数据库，有两份。 一份线上 采用统用数据库，一份配置后台预览用，采用firebase实时数据库。</p>
+<ul>
+<li><p>线上数据</p>
+<p>key 由链接拼接 比如 baoxian/child  =&gt; baoxian-child<br>value 为json 转string存储<br>提供接口可查询 由key查value</p>
+</li>
+<li><p>预览数据</p>
+<blockquote>
+<p>firebase 一款方便的实时数据库，已被谷歌收购 <a href="https://firebase.google.com/" target="_blank" rel="noopener">https://firebase.google.com/</a></p>
+</blockquote>
+<blockquote>
+<p>wilddog firebase国内模仿版 <a href="https://www.wilddog.com/" target="_blank" rel="noopener">https://www.wilddog.com/</a></p>
+</blockquote>
+</li>
+</ul>
+<p>线上服务的采用mysql ，因为我们的页面结构用的是json 所以转成string存到数据库里，约定页面链接为两级，key由页面链接拼接而成。由node提供接口，能简单通过key 查 value</p>
+<p>另一部分是实时数据库部分</p>
+<p>因为想实现实时的页面预览，所以采用google的firebase实时数据库，能实现实时存储和同步实时json数据。能够实现 我们在后台编辑，页面能实时看到变动的效果。</p>
+<p>我们约定，进入实时调试模式，只需在链接后添加 ?snowfire=true<br><img src="https://xqimg.imedao.com/16a6380b7f63aa0f3fef4aca.jpg" alt><br>这也是通过代码来实现的，<br>mounted 函数是在客户端渲染时触发，如果发现url中有snowfire参数为true,<br>就读取firebase数据，覆盖之前的数据，并开启监听，json数据一旦有变化，就能实现页面无刷新更新。无刷新更新这个是由vue引擎的双向绑定实现的。</p>
+<h2 id="编辑后台及使用说明"><a href="#编辑后台及使用说明" class="headerlink" title="编辑后台及使用说明"></a>编辑后台及使用说明</h2><p><img src="https://xqimg.imedao.com/16a63812d803aa343f99d3d6.jpg" alt><br>后台是基于我们的雪球CRM通用框架开发的，目前已在多个项目中使用，蛋卷新的CRM，mpaas,和大数据的配置后台，以及正在开发的行情CRM。ui 和组件库 是阿里的antd，开发起来比较方便。</p>
+<p><img src="https://xqimg.imedao.com/16a6381abaa3a48a3fe30626.jpg" alt></p>
+<p>如果要对文案进项修改，先在左上方的输入框中选择要修改的数据，是个二级菜单，选择完后，右边会出现 这个页面的线上页面地址和 预览地址， 区别就是我们约定的参数不同，预览地址后面加了 ？snowfire=true 。 直接点击这两个链接会新窗口打开页面。一般我们点击预览页面的链接来进行修改。</p>
+<p>下方是对应的json 数据 我们可以进行修改，里面的css变量 还可以看到颜色选择器</p>
+<p>点击小三角可以 展开 子模块，绿色的部分是文案 直接点击修改就行。</p>
+<p>右上方有 <code>发布预览</code> 和 <code>发布线上</code> 两个按钮。</p>
+<p><code>发布预览</code> 就是相当于保存，是发布到实时数据库。一般有修改后，直接点击<code>发布预览</code>即可。预览页面就可以看到变动了。</p>
+<p><code>发布线上</code> 是发布到线上数据，当预览页面修改没问题时，就可以发布线上了。</p>
+<p>当修改数据出现问题时，只要不点<code>发布预览</code>, 直接刷新就可以恢复之前的数据。</p>
+<p>如果不慎点了<code>发布预览</code>，想要还原的话，把鼠标移到<code>恢复</code>按钮处，会出现两个选项<br><img src="https://xqimg.imedao.com/169b4c7ece024453fe1aee31.jpg" alt></p>
+<ul>
+<li><p><code>恢复上次预览数据</code> 会将数据恢复到 上一次发布时。</p>
+</li>
+<li><p><code>从线上数据恢复</code> 会从线上获取数据，更新到预览数据中。</p>
+</li>
+</ul>
+<p>如果想要新增 复制 和删除的话， 点击前边的小方块，里面有选项。<br><img src="https://xqimg.imedao.com/16a63824ed139f533feea08a.jpg" alt></p>
+<p>如果遇到想修改排序的话，<br>拖动最前面的 6个小点，可以直接拖动排序，如图所示。<br><img src="https://xqimg.imedao.com/169a4a5ffcd433fe812118d8.gif" alt></p>
+<p>之前提到，json里的图片资源都是链接的形式，如果想换个图片怎么获得新图片的链接呢？<br>之前的方法是在雪球里面发个帖子，然后把帖子里面的图片地址复制出来，很不方便。</p>
+<p>所以开发了个图片上传的小工具，在运营助手下面， 有个图片上传的选项，点击后会新开一个窗口，可以把图片批量拖动到方框里 或者点击方框 选择图片上传。然后下方会出现图片的预览图和对应的cdn地址，我们可以直接复制这个地址，粘贴到编辑器的相应位置。<br><img src="https://xqimg.imedao.com/169a4a6a5884e9843fd4ca08.gif" alt></p>
+<h2 id="新建流程"><a href="#新建流程" class="headerlink" title="新建流程"></a>新建流程</h2><h4 id="1-已有模板时"><a href="#1-已有模板时" class="headerlink" title="1.已有模板时"></a>1.已有模板时</h4><p>新增页面示例<br><img src="https://xqimg.imedao.com/167f42c3e1c153fd65babf24.gif" alt></p>
+<p>比如新建一个中年人保险活动页，前端已经搭建了模板，设计按照约定的页面结构提供素材，开发人员或者运营人员打开后台，点击右上角，切换成开发者模式，在baoxian栏下 复制一个json信息，比如复制child的json</p>
+<p><img src="https://xqimg.imedao.com/16a6382d7c039f5b3fd3c42f.jpg" alt></p>
+<p>将名字改为 adult, 点击预览，随后切换回普通模式，选择新建的数据进行修改。</p>
+<p>这时页面已经建立，可以数据选择框右面看到相应网址。用浏览器打开新建的链接，当然内容还是child的内容。</p>
+<p>这时就可以替换内容了，建议关闭实时预览节省流量。</p>
+<p>替换完，预览没问题就可以发给审核人员或者客户看下，有问题也可以直接后台修改。</p>
+<p>确认没问题后，点击发布，即可更新线上数据库内容。<br>至此一个活动页就搭建完成了。</p>
+<h4 id="2-没有模板时"><a href="#2-没有模板时" class="headerlink" title="2.没有模板时"></a>2.没有模板时</h4><p>大部分情况下，已有模板不能满足设计要求。前端人员需要先开发出页面，抽离出变量，变量的精细程度看具体页面要求。可以全部配置成变量，也可以选择那些容易变动的或者不确定的内容替换。</p>
+<p>开发时可以先不调接口和firebase,直接在data中写JsonData这个变量，内部名字尽量取通俗易懂的。当整体开发完成后，切换为开发者模式，将JsonData复制到后台实时数据库中，切换为 code 模式，将json粘贴上去，格式化。由于插件问题，我们需要再次切换为 tree模式，在tree模式下随便改动一下 才会生效。然后点击预览，数据就同步到实时数据库了。</p>
+<p><img src="https://xqimg.imedao.com/16a6383c23f3a6843fedfdb3.jpg" alt></p>
+<p>这时将页面数据切换为实时数据库数据</p>
+<p>部署前端项目，就可以交由运营配置页面信息了。流程如1。</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/02/20/index.html" class="prev">PREV</a><a href="/2018/11/07/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2018/12/28/';
+var disqus_title = '可视化活动页配置平台';
+var disqus_url = 'https://blog.dappwind.com/2018/12/28/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

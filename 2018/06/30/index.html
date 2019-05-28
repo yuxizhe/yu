@@ -1,0 +1,132 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> DAPP开发指北 · DappWind</title><meta name="description" content="DAPP开发指北 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">DAPP开发指北</h1><div class="post-info">Jun 30, 2018</div><div class="post-content"><h1 id="DAPP开发指北"><a href="#DAPP开发指北" class="headerlink" title="DAPP开发指北"></a>DAPP开发指北</h1><h2 id="区块链印象"><a href="#区块链印象" class="headerlink" title="区块链印象"></a>区块链印象</h2><p>大家的印象： </p>
+<ul>
+<li>泡沫、传销、骗钱的、蹭热点</li>
+<li>需要很高深的数学和后端功底才能参与</li>
+<li>跟前端没啥关系</li>
+</ul>
+<p>实际并不是这样，前端会有很大的价值。</p>
+<ul>
+<li>无需后端 decentralized applications 无需后端服务</li>
+<li>eth智能合约 语法来源于 js</li>
+<li>星云链智能合约 就是js</li>
+</ul>
+<p>所以只要前端就可以开发完整dapp了。</p>
+<h2 id="DAPP"><a href="#DAPP" class="headerlink" title="DAPP"></a>DAPP</h2><p>去中心化应用也被称为DApp（decentralized applications）</p>
+<blockquote>
+<p>路线图 <a href="https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc" target="_blank" rel="noopener">https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc</a></p>
+</blockquote>
+<blockquote>
+<p>翻译 <a href="https://juejin.im/post/5a706c1d51882573497934ce" target="_blank" rel="noopener">https://juejin.im/post/5a706c1d51882573497934ce</a></p>
+</blockquote>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>无需后端</p>
+<h2 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h2><p>相当于后端</p>
+<blockquote>
+<p>solidity <a href="https://solidity.readthedocs.io/en/v0.4.24/" target="_blank" rel="noopener">https://solidity.readthedocs.io/en/v0.4.24/</a></p>
+</blockquote>
+<blockquote>
+<p>开发工具 remix <a href="https://remix.ethereum.org/" target="_blank" rel="noopener">https://remix.ethereum.org/</a></p>
+</blockquote>
+<h2 id="星云链"><a href="#星云链" class="headerlink" title="星云链"></a>星云链</h2><blockquote>
+<p>官网 <a href="https://nebulas.io/" target="_blank" rel="noopener">https://nebulas.io/</a></p>
+</blockquote>
+<blockquote>
+<p>git <a href="https://github.com/nebulasio" target="_blank" rel="noopener">https://github.com/nebulasio</a></p>
+</blockquote>
+<blockquote>
+<p>激励计划 <a href="https://nebulas.io/cn/incentive.html" target="_blank" rel="noopener">https://nebulas.io/cn/incentive.html</a></p>
+</blockquote>
+<blockquote>
+<p>邀请链接 多10NAS <a href="https://incentive.nebulas.io/cn/signup.html?invite=TUZWm" target="_blank" rel="noopener">https://incentive.nebulas.io/cn/signup.html?invite=TUZWm</a></p>
+</blockquote>
+<h2 id="钱包安装"><a href="#钱包安装" class="headerlink" title="钱包安装"></a>钱包安装</h2><ul>
+<li>本地web版<blockquote>
+<p><a href="https://github.com/nebulasio/web-wallet" target="_blank" rel="noopener">https://github.com/nebulasio/web-wallet</a><br>使用例子 <a href="https://juejin.im/post/5b02301d51882542682e80a1" target="_blank" rel="noopener">https://juejin.im/post/5b02301d51882542682e80a1</a></p>
+</blockquote>
+</li>
+<li>chrome插件<blockquote>
+<p><a href="https://chrome.google.com/webstore/detail/gehjkhmhclgnkkhpfamakecfgakkfkco" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/gehjkhmhclgnkkhpfamakecfgakkfkco</a></p>
+</blockquote>
+</li>
+<li>手机钱包<blockquote>
+<p><a href="https://nano.nebulas.io/" target="_blank" rel="noopener">https://nano.nebulas.io/</a></p>
+</blockquote>
+</li>
+<li>浏览器<blockquote>
+<p><a href="https://explorer.nebulas.io/#/" target="_blank" rel="noopener">https://explorer.nebulas.io/#/</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Dapp-简单例子"><a href="#Dapp-简单例子" class="headerlink" title="Dapp 简单例子"></a>Dapp 简单例子</h2><ul>
+<li>钱包助手<ul>
+<li>绑定钱包后，金额变动自动获得邮件提醒。主要是把用户数据存在链上。无需数据库。<blockquote>
+<p><a href="https://yuxizhe.github.io/cdn/nasmail/#/" target="_blank" rel="noopener">https://yuxizhe.github.io/cdn/nasmail/#/</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="智能合约-1"><a href="#智能合约-1" class="headerlink" title="智能合约"></a>智能合约</h2><ul>
+<li>钱包助手简单例子 <ul>
+<li>主要用到了存储和查询。智能合约的计算功能没有用到。<blockquote>
+<p><a href="https://explorer.nebulas.io/#/tx/601470431ba3991e80a2e7d56208e2c35110567769ff7e62b2c33ee0393a1159" target="_blank" rel="noopener">https://explorer.nebulas.io/#/tx/601470431ba3991e80a2e7d56208e2c35110567769ff7e62b2c33ee0393a1159</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="前端与智能合约交互"><a href="#前端与智能合约交互" class="headerlink" title="前端与智能合约交互"></a>前端与智能合约交互</h2><ul>
+<li><p>nebPay.js 浏览器用</p>
+<blockquote>
+<p><a href="https://github.com/nebulasio/nebPay" target="_blank" rel="noopener">https://github.com/nebulasio/nebPay</a></p>
+</blockquote>
+</li>
+<li><p>neb.js 服务器用 浏览器也能用</p>
+<blockquote>
+<p><a href="https://github.com/nebulasio/neb.js" target="_blank" rel="noopener">https://github.com/nebulasio/neb.js</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="网页部署"><a href="#网页部署" class="headerlink" title="网页部署"></a>网页部署</h2><ul>
+<li><p>github pages</p>
+</li>
+<li><p>coding pages</p>
+</li>
+<li><p>gitlab pages</p>
+</li>
+<li><p>自己买空间</p>
+</li>
+</ul>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><ul>
+<li>阿里云 top 域名<blockquote>
+<p><a href="https://wanwang.aliyun.com/?spm=5176.8142029.388261.293.e9396d3eVAXnkU" target="_blank" rel="noopener">https://wanwang.aliyun.com/?spm=5176.8142029.388261.293.e9396d3eVAXnkU</a></p>
+</blockquote>
+</li>
+<li>免费顶级域名 <blockquote>
+<p><a href="https://my.freenom.com/domains.php" target="_blank" rel="noopener">https://my.freenom.com/domains.php</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="备案"><a href="#备案" class="headerlink" title="备案"></a>备案</h2><ul>
+<li>需购买国内服务器。 淘宝有便宜的，可备案</li>
+</ul>
+<h2 id="免费领NAS"><a href="#免费领NAS" class="headerlink" title="免费领NAS"></a>免费领NAS</h2><blockquote>
+<p><a href="http://nasgo.top/" target="_blank" rel="noopener">http://nasgo.top/</a></p>
+</blockquote>
+<h2 id="祝大家提交DAPP成功！"><a href="#祝大家提交DAPP成功！" class="headerlink" title="祝大家提交DAPP成功！"></a>祝大家提交DAPP成功！</h2></div></article></div></main><footer><div class="paginator"><a href="/2018/08/02/index.html" class="prev">PREV</a><a href="/2018/05/10/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2018/06/30/';
+var disqus_title = 'DAPP开发指北';
+var disqus_url = 'https://blog.dappwind.com/2018/06/30/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

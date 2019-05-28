@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 日记 · DappWind</title><meta name="description" content="日记 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">日记</h1><div class="post-info">Feb 26, 2018</div><div class="post-content"><h1 id="单词自动记录"><a href="#单词自动记录" class="headerlink" title="单词自动记录"></a>单词自动记录</h1><p><a href="https://hectorguo.com/zh/save-words-in-dictionary/" target="_blank" rel="noopener">https://hectorguo.com/zh/save-words-in-dictionary/</a></p>
+<h4 id="将单词释义保存到文件下"><a href="#将单词释义保存到文件下" class="headerlink" title="将单词释义保存到文件下"></a>将单词释义保存到文件下</h4><pre><code>FILE=$HOME/blog/source/words/index.md
+</code></pre><h4 id="格式化单词释义（把单词，音标，解释分离开）"><a href="#格式化单词释义（把单词，音标，解释分离开）" class="headerlink" title="格式化单词释义（把单词，音标，解释分离开）"></a>格式化单词释义（把单词，音标，解释分离开）</h4><pre><code>RESULT=$(echo -e $1 | sed -E &apos;s#([a-zA-Z]+) (\|[^\|]+\|)(.*)#\#\#\ \1\\n\\n\#\#\#\#\ \2\\n\\n&gt;\3#g&apos;)
+echo -e &quot;\n$RESULT&quot; &gt;&gt; $FILE
+</code></pre></div></article></div></main><footer><div class="paginator"><a href="/2018/02/27/index.html" class="prev">PREV</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2018/02/26/';
+var disqus_title = '日记';
+var disqus_url = 'https://blog.dappwind.com/2018/02/26/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

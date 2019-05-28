@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 计划 · DappWind</title><meta name="description" content="计划 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">计划</h1><div class="post-info">Feb 28, 2018</div><div class="post-content"><h1 id="历史blog转为md文件"><a href="#历史blog转为md文件" class="headerlink" title="历史blog转为md文件"></a>历史blog转为md文件</h1><p>先都更新到hexo</p>
+<p>完成</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">blog.map(<span class="function">(<span class="params">item, key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> path = <span class="string">'source/_posts/'</span> + item.time + item.title + <span class="string">'.md'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> head = <span class="string">'---\ntitle: '</span> + item.title + <span class="string">'\ndate: '</span> + item.time + <span class="string">'\n---\n'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  fs.open(path, <span class="string">'w'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, fd</span>) </span>&#123;</span><br><span class="line">    fs.writeFile(fd, head + item.content, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.error(err);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(item.title + <span class="string">"  写入成功！"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="sentry-学习"><a href="#sentry-学习" class="headerlink" title="sentry 学习"></a>sentry 学习</h1><p><a href="http://sentry.snowballfinance.com/Xueqiu/snowman/" target="_blank" rel="noopener">http://sentry.snowballfinance.com/Xueqiu/snowman/</a></p>
+<blockquote>
+<p>Stop hoping your users will report errors <br> Open-source error tracking that helps developers monitor and fix crashes in real time. Iterate continuously. Boost efficiency. Improve user experience.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">script(src=<span class="string">"https://cdn.ravenjs.com/3.22.4/raven.min.js"</span>,crossorigin=<span class="string">"anonymous"</span>)</span><br><span class="line">script.</span><br><span class="line">  Raven.config(<span class="string">'https://c34b45334b27406baa5e8c2b72f7696c@sentry.io/295728'</span>).install()</span><br><span class="line">script.</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'asdfa'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(aaa)</span><br></pre></td></tr></table></figure>
+<p><code>console.log(aaa)</code> 这个就会报错 记录在账户里</p>
+<p>This is a quick getting started guide. For in-depth instructions on integrating Sentry with JavaScript, view our complete documentation.</p>
+<p>Installation<br>The easiest way to load Raven.js is to load it directly from our CDN. This script tag should be included after other libraries are loaded, but before your main application code (e.g. app.js):</p>
+<pre><code>&lt;script src=&quot;https://cdn.ravenjs.com/3.22.4/raven.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+</code></pre><p>For installation using npm or other package managers, see Installation.</p>
+<p>Configuring the Client<br>Next you need to configure Raven.js to use your Sentry DSN:</p>
+<pre><code>Raven.config(&apos;https://a03b135e792c4fb483971701326c1985@sentry.io/295735&apos;).install()
+</code></pre><p>It is additionally recommended (but not required) to wrap your application start using Raven.context. This can help surface additional errors in some execution contexts.</p>
+<pre><code>Raven.context(function () {
+initMyApp();
+</code></pre><p>});<br>At this point, Raven is ready to capture any uncaught exception.</p>
+<p>Once you have Raven up and running, it is highly recommended to check out Configuration and Usage.</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/03/02/index.html" class="prev">PREV</a><a href="/2018/02/27/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2018/02/28/';
+var disqus_title = '计划';
+var disqus_url = 'https://blog.dappwind.com/2018/02/28/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

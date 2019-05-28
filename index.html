@@ -1,0 +1,146 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> DappWind</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link active">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2019/05/25/index.html" class="post-title-link">Gulp老项目升级为webpack打包及相关优化</a></h2><div class="post-info">May 25, 2019</div><div class="post-content">概览
+vue 和 js 改为webpack打包 
+
+升级babel
+引入webpack config
+添加webpack loader
+生成入口列表 entry
+结合到gulp流程
+增加可视化打包分析
+
+
+开发模式热更新
+
+webpack-dev-server
+
+
+vue 拆分多入口 实现按需加载 按需引用vue-component
+
+vue 文件入口 为指定入口 
+vue-web
+vue-mob</div><a href="/2019/05/25/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2019/05/21/index.html" class="post-title-link">ES APM字段检索问题解决</a></h2><div class="post-info">May 21, 2019</div><div class="post-content">
+使用apm时，处理数据时发现 有的字段没法检索，发现是没有建立mapping的原因，可以看到有个小三角，一般这种情况下， 在 management &gt; index Patterns 中点击刷新就行
+
+但是跟预期不同的是，fields数量并没有增加，还是建立不了mapping.
+
+尝试修改mapping文件 发现只有通过api的方式修改，只能全量更新，而且点击refresh field li</div><a href="/2019/05/21/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2019/04/03/index.html" class="post-title-link">Elasticsearch APM Server 配置</a></h2><div class="post-info">Apr 3, 2019</div><div class="post-content">apm-server.yml 配置文件12345678910111213141516output.elasticsearch.hosts: [ip1,ip2,ip3,ip4]queue.mem.events: 51200output.elasticsearch.workers: 4output.elasticsearch.bulk_max_size: 5120# 开启RUMapm-server.r</div><a href="/2019/04/03/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2019/02/20/index.html" class="post-title-link">常用个人网页部署方式</a></h2><div class="post-info">Feb 20, 2019</div><div class="post-content">
+1.静态内容
+github pages优点
+
+方便 用的人多
+
+缺点
+
+访问慢 不稳定
+无CI,不过外部工具也很多
+
+gitlab pages优点
+
+有CI 可以持续集成
+
+缺点
+
+CI编译慢，不稳定
+
+coding优点
+
+国内访问快
+
+缺点
+
+需要在页面上给coding打广告
+
+第一次打开会出现广告
+
+
+虚拟主机优点 
+
+稳定 快
+
+缺点
+
+贵，需要备案
+
+阿里云和腾讯云的 对象存储优点 
+
+</div><a href="/2019/02/20/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/12/28/index.html" class="post-title-link">可视化活动页配置平台</a></h2><div class="post-info">Dec 28, 2018</div><div class="post-content">可视化活动页配置平台背景因为活动页的特点，就是要求快速上线，经常修改。我们回想下发布活动页时的情况：
+运营会想:
+
+我要发布个运营页面，为什么还要看前端的排期？为啥不能自己配置，我要自己改代码。
+我要改个文案，前端怎么两个多小时了还没改好，是不是能力有问题？而且改多了还发急，态度不好。
+
+前端也会吐槽：
+
+一个活动页，来回改，改了一遍又一遍，提了十几个PR全是文案修改，项目都部署了好几次。
+
+造成</div><a href="/2018/12/28/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/11/07/index.html" class="post-title-link">Cli</a></h2><div class="post-info">Nov 7, 2018</div><div class="post-content">nodejs 编写简单 cli
+Command Line Interface，顾名思义是一种通过命令行来交互的工具或者说应用。SPA应用中常用的如vue-cli, angular-cli, node.js开发搭建express-generator，还有我们最常用的webpack，npm等。他们是web开发者的辅助工具，旨在减少低级重复劳动，专注业务提高开发效率，规范develop workflow</div><a href="/2018/11/07/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/09/12/index.html" class="post-title-link">Vue简易实现</a></h2><div class="post-info">Sep 12, 2018</div><div class="post-content">简易vue框架实现找到了个简单代码实现了vue的少许基本功能的例子，有助于了解vue源码，加深对框架的理解。遇到问题也可以从原理方面分析。
+实现目标12345678910111213141516171819202122232425262728293031&lt;body&gt;  &lt;div id="app"&gt;    &lt;h2&gt;&#123;&#123;title&#125;</div><a href="/2018/09/12/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/08/21/index.html" class="post-title-link">字体加载优化</a></h2><div class="post-info">Aug 21, 2018</div><div class="post-content">字体加载 技巧DIN-Bold  苹果有 安卓没有
+如果只用外部字体  加载时间中 该字体空白 体验不好
+安卓：在页面中加入 preload
+1&lt;link rel="preload" href="//192.168.0.170:8080/style/common/fonts/DIN-Bold.woff" as="font" type="font/woff" crossorigin&gt;
+苹</div><a href="/2018/08/21/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/08/06/index.html" class="post-title-link">跨域名获取Cookies-SSO</a></h2><div class="post-info">Aug 6, 2018</div><div class="post-content">跨域名获取cookies-SSO背景同一个公司多个域名，账号体系相同。要实现一处登录，多个网站可用。比如，登录了淘宝（taobao）后，域名不同的天猫（tmal）、飞猪等页面也都登录了。不同网站之间能拿到通用cookies.
+解决方案1. 本地传递即通过iframe 等
+2.服务器传递网上一堆什么jsonp的不能用的例子，其实本质就是Access-Control-Allow-Origin  当A域</div><a href="/2018/08/06/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/08/02/index.html" class="post-title-link">PWA 渐进式网页应用</a></h2><div class="post-info">Aug 2, 2018</div><div class="post-content">PWA 渐进式网页应用背景:去年做保险项目时，发现雪球安卓客户端 push 新建webview 时，如果页面是用了SPA框架，加载慢 每页打开都要转圈加载。体验不好。
+什么是 PWAhttps://developers.google.com/web/progressive-web-apps/
+Progressive Web App, 简称 PWA，是提升 Web App 的体验的一种新方法，能给用</div><a href="/2018/08/02/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/06/30/index.html" class="post-title-link">DAPP开发指北</a></h2><div class="post-info">Jun 30, 2018</div><div class="post-content">DAPP开发指北区块链印象大家的印象： 
+
+泡沫、传销、骗钱的、蹭热点
+需要很高深的数学和后端功底才能参与
+跟前端没啥关系
+
+实际并不是这样，前端会有很大的价值。
+
+无需后端 decentralized applications 无需后端服务
+eth智能合约 语法来源于 js
+星云链智能合约 就是js
+
+所以只要前端就可以开发完整dapp了。
+DAPP去中心化应用也被称为DApp（decentra</div><a href="/2018/06/30/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/05/10/index.html" class="post-title-link">Pdf自动分页</a></h2><div class="post-info">May 10, 2018</div><div class="post-content">自动分页12345678910111213141516171819202122232425262728293031323334export function autoSplitPages() &#123;  var blocks = $('.block')  var group = []  var groupHeight = 0  blocks.map(function(index) &#123;</div><a href="/2018/05/10/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/05/03/index.html" class="post-title-link">Webpack4vue简单项目</a></h2><div class="post-info">May 3, 2018</div><div class="post-content">不想用vue-cli了今天更新了一下vue-cli..感觉变化太大了，之前熟悉的那些配置文件都没了。。。有种跟不上时代的感觉。vue-cli变化这么大。。我就不用了。虽然说vue-cli是3.0。  但是依旧没有使用最近的webpack4.0。  直接用webpack4.0吧
+安装分析一直对把框架文件打包在一块儿的做法很不解，对于我们这种没买CDN的，光一个vue打包后就60k,包很大。所以就把引</div><a href="/2018/05/03/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/05/02/index.html" class="post-title-link">复杂Pdf前端自动生成</a></h2><div class="post-info">May 2, 2018</div><div class="post-content">复杂pdf前端自动生成背景私募每月要生成近200份基金月报，每个月报上图表很多，运营手工制作枯燥且时间来不及。想要个自动生成pdf月报的功能。
+
+月报例子
+
+解决方案1.页面截图 再生成pdfhtml2canvas
+
+官网 https://html2canvas.hertzen.com/
+
+优点简单，百度中文教程多
+缺点pdf文字不可选，多页样式有问题
+2.PDFKitA JavaScript</div><a href="/2018/05/02/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/04/26/index.html" class="post-title-link">Puppeteer</a></h2><div class="post-info">Apr 26, 2018</div><div class="post-content">puppeteer神奇的headless chrome 。今天前端分享会，天宇分享的。感觉很不错，比phantom简单好用。可以知道页面渲染完成。代码也是很简单。12345678910const puppeteer = require('puppeteer');(async () =&gt; &#123;  const browser = await puppeteer.launch();  co</div><a href="/2018/04/26/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/04/20/index.html" class="post-title-link">批量Doc变量更新</a></h2><div class="post-info">Apr 20, 2018</div><div class="post-content">批量doc变量更新今天临时有个运营的同事跑过来，她们有个急迫的任务，要根据excel里面每一行数据生成一个word文档。大概50多份，下班前要弄完。
+派我出马，初步想 word转html excel转json vue替换。
+word自己的另存为html 再打印时，样式会乱。就网上找了个，很方便 
+
+http://www.docpe.com/word/word-to-html.aspx
+
+生成的ht</div><a href="/2018/04/20/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/04/09/index.html" class="post-title-link">Sketch-Html-Tf</a></h2><div class="post-info">Apr 9, 2018</div><div class="post-content">前端自动生成看了篇文章 很有意思
+如何用深度学习将前端设计模型自动转换为代码？
+
+https://juejin.im/post/5ab3826cf265da2391480755但是这个是基于像素的，可以改为前端更通用的基于设计稿的。
+
+然后就 发现了这个，从sketc转html 
+
+https://github.com/xinyu198736/sketch-to-html
+
+不太完善。但是可以取其</div><a href="/2018/04/09/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/04/02/index.html" class="post-title-link">Genius</a></h2><div class="post-info">Apr 2, 2018</div><div class="post-content">有意思的jstenserflow.js javascript tenserflow看着还是挺开心的，跟自己的专业有点联系了。信息论 机器学习 压缩感知一堆都可以弄了。
+
+https://juejin.im/post/5abf1ad8f265da238059c474
+
+
+https://js.tensorflow.org/
+
+ios 支持 PWA 了
+https://mp.weixin.qq.com</div><a href="/2018/04/02/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/03/26/index.html" class="post-title-link">Phantomjs</a></h2><div class="post-info">Mar 26, 2018</div><div class="post-content">phantomjs 生成月报私募基金月报很多图表，有生成pdf这个需求。之前认为前端生成pdf只能采取截图的方式，pdf上的文字不能选择。后来发现了phantomjs,很方便，可以识别出文字。
+安装
+http://phantomjs.org/quick-start.html官网下载，编辑 ./zshrc 增加 alias phantomjs=’~/PATH/TO/phantomjs’
+
+使用pha</div><a href="/2018/03/26/index.html" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/03/26/index.html" class="post-title-link">Docker</a></h2><div class="post-info">Mar 26, 2018</div><div class="post-content">dockerfile node1234567FROM mhart/alpine-node:8WORKDIR /appCOPY . .RUN npm installRUN npm run buildEXPOSE 8080CMD npm run start</div><a href="/2018/03/26/index.html" class="read-more">...more</a></article></li></ul></main><footer><div class="paginator"><a href="/page/2/index.html" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

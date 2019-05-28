@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Webpack4vue简单项目 · DappWind</title><meta name="description" content="Webpack4vue简单项目 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Webpack4vue简单项目</h1><div class="post-info">May 3, 2018</div><div class="post-content"><h1 id="不想用vue-cli了"><a href="#不想用vue-cli了" class="headerlink" title="不想用vue-cli了"></a>不想用vue-cli了</h1><p>今天更新了一下vue-cli..感觉变化太大了，之前熟悉的那些配置文件都没了。。。有种跟不上时代的感觉。vue-cli变化这么大。。我就不用了。虽然说vue-cli是3.0。  但是依旧没有使用最近的webpack4.0。  直接用webpack4.0吧</p>
+<h1 id="安装分析"><a href="#安装分析" class="headerlink" title="安装分析"></a>安装分析</h1><p>一直对把框架文件打包在一块儿的做法很不解，对于我们这种没买CDN的，光一个vue打包后就60k,包很大。所以就把引用文件写在html里，只把自己写的代码进行webpack打包。也可以在老项目上用。vue  vue-router 都可以用这种方法。</p>
+<h1 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h1><p>新的webpack4 说是0配置，跟着官方第一个课程走，确实很方便。 反正前端框架变化很大，现在现学，跟用很久的人没区别。</p>
+<blockquote>
+<p><a href="https://doc.webpack-china.org/guides/getting-started/#%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">https://doc.webpack-china.org/guides/getting-started/#%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%85</a><br>配置个入口就行了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">  mode: <span class="string">'development'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'main.js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="vue-loader"><a href="#vue-loader" class="headerlink" title="vue-loader"></a>vue-loader</h1><p>本来不想用.vue的文件来着，后来分开完全是在倒退，所以还是用vue-loader吧，中文文档连手动配置vue-loader都没有。英文文档才有。。有种被自己人歧视的感觉</p>
+<blockquote>
+<p><a href="https://vue-loader.vuejs.org/guide/" target="_blank" rel="noopener">https://vue-loader.vuejs.org/guide/</a></p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/05/10/index.html" class="prev">PREV</a><a href="/2018/05/02/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2018/05/03/';
+var disqus_title = 'Webpack4vue简单项目';
+var disqus_url = 'https://blog.dappwind.com/2018/05/03/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

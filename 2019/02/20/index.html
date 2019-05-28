@@ -1,0 +1,109 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 常用个人网页部署方式 · DappWind</title><meta name="description" content="常用个人网页部署方式 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.dappwind.com/atom.xml" title="DappWind"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">常用个人网页部署方式</h1><div class="post-info">Feb 20, 2019</div><div class="post-content"><hr>
+<h1 id="1-静态内容"><a href="#1-静态内容" class="headerlink" title="1.静态内容"></a>1.静态内容</h1><hr>
+<h2 id="github-pages"><a href="#github-pages" class="headerlink" title="github pages"></a>github pages</h2><p>优点</p>
+<ul>
+<li>方便 用的人多</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>访问慢 不稳定</li>
+<li>无CI,不过外部工具也很多</li>
+</ul>
+<h2 id="gitlab-pages"><a href="#gitlab-pages" class="headerlink" title="gitlab pages"></a>gitlab pages</h2><p>优点</p>
+<ul>
+<li>有CI 可以持续集成</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>CI编译慢，不稳定</li>
+</ul>
+<h2 id="coding"><a href="#coding" class="headerlink" title="coding"></a>coding</h2><p>优点</p>
+<ul>
+<li>国内访问快</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li><p>需要在页面上给coding打广告</p>
+</li>
+<li><p>第一次打开会出现广告</p>
+</li>
+</ul>
+<h2 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h2><p>优点 </p>
+<ul>
+<li>稳定 快</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>贵，需要备案</li>
+</ul>
+<h2 id="阿里云和腾讯云的-对象存储"><a href="#阿里云和腾讯云的-对象存储" class="headerlink" title="阿里云和腾讯云的 对象存储"></a>阿里云和腾讯云的 对象存储</h2><p>优点 </p>
+<ul>
+<li>快，基本不要钱，稳定，支持https</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li><p>需要一个备案过的域名</p>
+</li>
+<li><p>无CI，但是有api</p>
+</li>
+</ul>
+<hr>
+<h1 id="2-动态内容"><a href="#2-动态内容" class="headerlink" title="2.动态内容"></a>2.动态内容</h1><hr>
+<h2 id="heroku"><a href="#heroku" class="headerlink" title="heroku"></a>heroku</h2><blockquote>
+<p><a href="https://devcenter.heroku.com/" target="_blank" rel="noopener">https://devcenter.heroku.com/</a></p>
+</blockquote>
+<h2 id="ibm-bluemix"><a href="#ibm-bluemix" class="headerlink" title="ibm bluemix"></a>ibm bluemix</h2><blockquote>
+<p><a href="https://www.ibm.com/cloud-computing/bluemix/node/4471" target="_blank" rel="noopener">https://www.ibm.com/cloud-computing/bluemix/node/4471</a></p>
+</blockquote>
+<h2 id="google-app-engine"><a href="#google-app-engine" class="headerlink" title="google app engine"></a>google app engine</h2><blockquote>
+<p><a href="https://console.cloud.google.com/" target="_blank" rel="noopener">https://console.cloud.google.com/</a></p>
+</blockquote>
+<h2 id="阿里腾讯学生机"><a href="#阿里腾讯学生机" class="headerlink" title="阿里腾讯学生机"></a>阿里腾讯学生机</h2><blockquote>
+<p><a href="https://cloud.tencent.com/act/campus" target="_blank" rel="noopener">https://cloud.tencent.com/act/campus</a></p>
+</blockquote>
+<hr>
+<h1 id="3-CI"><a href="#3-CI" class="headerlink" title="3.CI"></a>3.CI</h1><hr>
+<h2 id="codeship-CI介绍"><a href="#codeship-CI介绍" class="headerlink" title="codeship CI介绍"></a>codeship CI介绍</h2><blockquote>
+<p><a href="https://app.codeship.com" target="_blank" rel="noopener">https://app.codeship.com</a></p>
+</blockquote>
+<h2 id="travis-ci"><a href="#travis-ci" class="headerlink" title="travis-ci"></a>travis-ci</h2><blockquote>
+<p><a href="https://docs.travis-ci.com/user/deployment/pages/" target="_blank" rel="noopener">https://docs.travis-ci.com/user/deployment/pages/</a></p>
+</blockquote>
+<h2 id="daocloud-docker-CI"><a href="#daocloud-docker-CI" class="headerlink" title="daocloud docker CI"></a>daocloud docker CI</h2><blockquote>
+<p><a href="https://daocloud.io" target="_blank" rel="noopener">https://daocloud.io</a></p>
+</blockquote>
+<h2 id="docker-hub-CI-介绍"><a href="#docker-hub-CI-介绍" class="headerlink" title="docker hub CI 介绍"></a>docker hub CI 介绍</h2><blockquote>
+<p><a href="https://hub.docker.com" target="_blank" rel="noopener">https://hub.docker.com</a></p>
+</blockquote>
+<h1 id="4-私有js-cdn方案"><a href="#4-私有js-cdn方案" class="headerlink" title="4.私有js cdn方案"></a>4.私有js cdn方案</h1><blockquote>
+<p><a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a></p>
+</blockquote>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<blockquote>
+<p>所以比较好的方案是 github私有仓库，codeship做CI，js用jsdelivr，阿里云和腾讯云的对象存储来存放网页</p>
+</blockquote>
+<h1 id="实践例子"><a href="#实践例子" class="headerlink" title="实践例子"></a>实践例子</h1><p>hexo 搭建博客<br>theme模板 链接都添加 index.html</p>
+<p>使用 ali-oss 上传到 阿里OSS</p>
+<p>在codeship上配置CI</p>
+<p>以后直接新增 .md 文件即可实现发布</p>
+<p>上传脚本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'util'</span>)</span><br><span class="line"><span class="keyword">const</span> OSS = <span class="built_in">require</span>(<span class="string">'ali-oss'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> promisifyReaddir = util.promisify(fs.readdir)</span><br><span class="line"><span class="keyword">const</span> promisifyStat = util.promisify(fs.stat)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 阿里 OSS access key 拥有对 OSS 的全部权限</span></span><br><span class="line"><span class="keyword">const</span> ALIOSSKEY = &#123;</span><br><span class="line">  key: <span class="string">'......'</span>,</span><br><span class="line">  secret: <span class="string">'.......'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> OSS(&#123;</span><br><span class="line">  <span class="comment">// 请填写你的 Bucket 对应的 region</span></span><br><span class="line">  region: <span class="string">'oss-cn-beijing'</span>,</span><br><span class="line">  accessKeyId: ALIOSSKEY.key,</span><br><span class="line">  accessKeySecret: ALIOSSKEY.secret,</span><br><span class="line">  <span class="comment">// 请填写对应的 Bucket 名字</span></span><br><span class="line">  bucket: <span class="string">'...'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> publicPath = path.resolve(__dirname, <span class="string">'./blog'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params">proPath = <span class="string">''</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> dir = <span class="keyword">await</span> promisifyReaddir(<span class="string">`<span class="subst">$&#123;publicPath&#125;</span><span class="subst">$&#123;proPath&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; dir.length; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> stat = <span class="keyword">await</span> promisifyStat(path.resolve(<span class="string">`<span class="subst">$&#123;publicPath&#125;</span><span class="subst">$&#123;proPath&#125;</span>`</span>, dir[i]))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (stat.isFile()) &#123;</span><br><span class="line">      <span class="keyword">const</span> fileStream = fs.createReadStream(path.resolve(<span class="string">`<span class="subst">$&#123;publicPath&#125;</span><span class="subst">$&#123;proPath&#125;</span>`</span>, dir[i]))</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`上传文件: <span class="subst">$&#123;proPath&#125;</span>/<span class="subst">$&#123;dir[i]&#125;</span>`</span>)</span><br><span class="line">      <span class="keyword">const</span> result = <span class="keyword">await</span> client.putStream(<span class="string">`<span class="subst">$&#123;proPath&#125;</span>/<span class="subst">$&#123;dir[i]&#125;</span>`</span>, fileStream)</span><br><span class="line">      <span class="comment">// console.log(result)</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (stat.isDirectory()) &#123;</span><br><span class="line">      <span class="keyword">await</span> run(<span class="string">`<span class="subst">$&#123;proPath&#125;</span>/<span class="subst">$&#123;dir[i]&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run()</span><br></pre></td></tr></table></figure>
+<h2 id="codeship-配置命令"><a href="#codeship-配置命令" class="headerlink" title="codeship 配置命令"></a>codeship 配置命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run build</span><br><span class="line">npm run upload</span><br></pre></td></tr></table></figure></div></article></div></main><footer><div class="paginator"><a href="/2019/04/03/index.html" class="prev">PREV</a><a href="/2018/12/28/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2019/02/20/';
+var disqus_title = '常用个人网页部署方式';
+var disqus_url = 'https://blog.dappwind.com/2019/02/20/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2019 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>
