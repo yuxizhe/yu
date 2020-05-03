@@ -1,0 +1,49 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="referrer" content="no-referrer"><title> Flutter桌面端调研 · DappWind</title><meta name="description" content="Flutter桌面端调研 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon_dappwind.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="canonical" href="https://blog.dappwind.com/2020/03/17/index.html"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon_dappwind.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Flutter桌面端调研</h1><div class="post-info">Mar 17, 2020</div><div class="post-content"><h1 id="Flutter桌面端调研"><a href="#Flutter桌面端调研" class="headerlink" title="Flutter桌面端调研"></a>Flutter桌面端调研</h1><p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9c786a6106cd?w=2244&amp;h=1562&amp;f=png&amp;s=3989010" alt></p>
+<p>官方文档</p>
+<blockquote>
+<p><a href="https://flutter.dev/desktop" target="_blank" rel="noopener">https://flutter.dev/desktop</a></p>
+</blockquote>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我们要做桌面版的客户端，有原生和RN两种选择。因为之前开发过flutter，记得flutter也支持桌面端，所以就试用了下。</p>
+<p>flutter的介绍及开发见这篇文章</p>
+<blockquote>
+<p><a href="https://blog.dappwind.com/2019/09/01/index.html">https://blog.dappwind.com/2019/09/01/index.html</a></p>
+</blockquote>
+<h3 id="打包好的Demo例子"><a href="#打包好的Demo例子" class="headerlink" title="打包好的Demo例子"></a>打包好的Demo例子</h3><p>雪糕应用广场 桌面端</p>
+<p>mac版下载:  </p>
+<blockquote>
+<p><a href="https://file.dappwind.com/snb_store_flutter.zip" target="_blank" rel="noopener">https://file.dappwind.com/snb_store_flutter.zip</a></p>
+</blockquote>
+<p>windows: </p>
+<h1 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h1><p>很流畅，交互效果媲美app。</p>
+<h1 id="开发效率"><a href="#开发效率" class="headerlink" title="开发效率"></a>开发效率</h1><p>需要用dart语言写。</p>
+<p>目前materal UI大部分是为移动端设计的，如果想桌面端使用的话，需要修改。无法使用常见的web ui框架。</p>
+<p>不过如果以后app也接入flutter的话，可以实现大量的代码复用。以“雪糕”为例，原有的app代码直接可以生成桌面版。</p>
+<h1 id="项目进度"><a href="#项目进度" class="headerlink" title="项目进度"></a>项目进度</h1><p>还在开发中，mac版已合入主分支，windows版还未合入主分支，但是也可以预览。</p>
+<h1 id="生态"><a href="#生态" class="headerlink" title="生态"></a>生态</h1><p>目前生态还在完善，市面上还没有人用到。第三方包比不上web端的多，但基本能找到。比如行情图 <a href="https://pub.dev/packages/syncfusion_flutter_charts" target="_blank" rel="noopener">https://pub.dev/packages/syncfusion_flutter_charts</a></p>
+<h1 id="体积大小"><a href="#体积大小" class="headerlink" title="体积大小"></a>体积大小</h1><p>空项目生成包大概60M，雪糕生成包67M，zip压缩后20M</p>
+<h1 id="菜单栏设置"><a href="#菜单栏设置" class="headerlink" title="菜单栏设置"></a>菜单栏设置</h1><p><a href="https://github.com/google/flutter-desktop-embedding/tree/master/plugins/menubar" target="_blank" rel="noopener">https://github.com/google/flutter-desktop-embedding/tree/master/plugins/menubar</a></p>
+<p>目前支持mac 导航栏设置、支持快捷键。</p>
+<p>windows的还在开发中：</p>
+<p><a href="https://github.com/google/flutter-desktop-embedding/issues/105" target="_blank" rel="noopener">https://github.com/google/flutter-desktop-embedding/issues/105</a></p>
+<h1 id="系统通知"><a href="#系统通知" class="headerlink" title="系统通知"></a>系统通知</h1><p>暂时没有找到</p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><p>支持，需要权限</p>
+<h1 id="应用更新"><a href="#应用更新" class="headerlink" title="应用更新"></a>应用更新</h1><p>官方没有提供，需自行设计</p>
+<p><a href="https://github.com/google/flutter-desktop-embedding/issues/469" target="_blank" rel="noopener">https://github.com/google/flutter-desktop-embedding/issues/469</a></p>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/09/01/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2020/03/17/';
+var disqus_title = 'Flutter桌面端调研';
+var disqus_url = 'https://blog.dappwind.com/2020/03/17/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2020 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

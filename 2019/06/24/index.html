@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="referrer" content="no-referrer"><title> ES APM 监控报警 · DappWind</title><meta name="description" content="ES APM 监控报警 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon_dappwind.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="canonical" href="https://blog.dappwind.com/2019/06/24/index.html"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon_dappwind.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">ES APM 监控报警</h1><div class="post-info">Jun 24, 2019</div><div class="post-content"><h2 id="一-背景"><a href="#一-背景" class="headerlink" title="一.背景"></a>一.背景</h2><p>日志数据和apm数据被es处理后，能配置出可视化的查询图表，能及时了解server和网站的实时运行情况，但是还是需要人工定时查看。所以对es采集处理后的分类数据和图表，实现自动监控和报警的功能</p>
+<h2 id="二-方案"><a href="#二-方案" class="headerlink" title="二.方案"></a>二.方案</h2><h3 id="1-es-自己的watcher-alert-功能"><a href="#1-es-自己的watcher-alert-功能" class="headerlink" title="1.es 自己的watcher alert 功能"></a>1.es 自己的watcher alert 功能</h3><p>es 的 basic 授权license不带 watcher功能，需要购买 GOLD license</p>
+<blockquote>
+<p><a href="https://www.elastic.co/subscriptions" target="_blank" rel="noopener">https://www.elastic.co/subscriptions</a></p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/24/16b896c8806ca587?w=2360&amp;h=1216&amp;f=png&amp;s=145974" alt></p>
+<h3 id="2-单独的开源alert服务"><a href="#2-单独的开源alert服务" class="headerlink" title="2.单独的开源alert服务"></a>2.单独的开源alert服务</h3><p><a href="https://github.com/daaru00/es-alert" target="_blank" rel="noopener">https://github.com/daaru00/es-alert</a></p>
+<p><a href="https://github.com/Akagi201/esalert" target="_blank" rel="noopener">https://github.com/Akagi201/esalert</a></p>
+<p>缺点：无可视化配置界面，用的人不多</p>
+<h3 id="3-采用grafana-alert"><a href="#3-采用grafana-alert" class="headerlink" title="3.采用grafana alert"></a>3.采用grafana alert</h3><p>grafana 自带一个go的server服务，可实现可视化报警配置，可以很方便的配置成钉钉群报警机器人。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/24/16b896cc8f491ab1?w=654&amp;h=513&amp;f=png&amp;s=191626" alt></p>
+<h2 id="三-配置"><a href="#三-配置" class="headerlink" title="三.配置"></a>三.配置</h2><h3 id="1-grafana-添加es-为database"><a href="#1-grafana-添加es-为database" class="headerlink" title="1.grafana 添加es 为database"></a>1.grafana 添加es 为database</h3><p>index name 跟kibana的index一样即可</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/24/16b896df9b88fe13?w=577&amp;h=1008&amp;f=png&amp;s=160871" alt></p>
+<p>点击测试，提示成功。</p>
+<h3 id="2-配置查询语句，生成图表"><a href="#2-配置查询语句，生成图表" class="headerlink" title="2.配置查询语句，生成图表"></a>2.配置查询语句，生成图表</h3><p>查询语句可以在kibana中测试，没问题后再复制到grafana,grafana的数据展示还支持函数处理，感觉比kibana强大方便些，而且更快。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/24/16b896ec6a3aa6bc?w=821&amp;h=630&amp;f=png&amp;s=132001" alt></p>
+<h3 id="3-配置报警"><a href="#3-配置报警" class="headerlink" title="3.配置报警"></a>3.配置报警</h3><p>每个图表可以配置单独的报警，选择方便的钉钉机器人即可。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/24/16b896ef9bb1fa5e?w=825&amp;h=539&amp;f=png&amp;s=120820" alt></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/24/16b896f22011551d?w=665&amp;h=521&amp;f=png&amp;s=90626" alt></p>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/09/01/index.html" class="prev">PREV</a><a href="/2019/06/14/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2019/06/24/';
+var disqus_title = 'ES APM 监控报警';
+var disqus_url = 'https://blog.dappwind.com/2019/06/24/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2020 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>

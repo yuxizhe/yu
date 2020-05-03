@@ -1,0 +1,128 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="referrer" content="no-referrer"><title> Flutter在雪球应用广场的实践 · DappWind</title><meta name="description" content="Flutter在雪球应用广场的实践 - DappWind"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon_dappwind.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="canonical" href="https://blog.dappwind.com/2019/09/01/index.html"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon_dappwind.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/index.html" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/index.html" target="_self" class="nav-list-link">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Flutter在雪球应用广场的实践</h1><div class="post-info">Sep 1, 2019</div><div class="post-content"><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>雪球目前有3个App，雪球、蛋卷基金、雪盈证券，每个app又有各种版本比如feat、rc、sep等等。在开发阶段打出包后，如何能让开发同学测试同学，设计同学，产品经理等快速找到，并方便的安装到手机上？很旧之前是有个网页提供下载，但是年久失修，没有分类不支持搜索，安装也不太方便。所以就有了重构雪球应用广场的需求。</p>
+<p>整个重构包括打包优化，后台接口，与前台界面。这里主要介绍前台界面。</p>
+<p>19年7月，开始做这个app，大概一个月的时间，从入门学习到公司内部上线，完成3端开发，Android iOS web。也体现出了flutter的优势。</p>
+<p>app样子如下:<br><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9baa5445a9a3?w=2498&amp;h=1420&amp;f=png&amp;s=1121812" alt></p>
+<h1 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h1><p>最近flutter异常火热，Flutter是Google开源的跨端UI工具包，能一套代码提供ios android web三端的应用。我们基础研发平台也一直想在雪球内部试用下，当个快速试错者，帮助大家快速踩坑。正好借这个重构的契机，所以选取了flutter的跨端开发框架。结果证明确实很香，没让我们失望。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9bd2e52772eb?w=1158&amp;h=579&amp;f=png&amp;s=103413" alt></p>
+<p>我们看这个图，除了手机端和web端之外，flutter也是支持电脑端应用和嵌入式应用的开发，除了想跟React Native PK 之外，还想跟桌面端开发框架electron及嵌入式C语言PK下。另外也是谷歌另一个新系统Fuchsia的主要开发方式。</p>
+<h1 id="Flutter的优点"><a href="#Flutter的优点" class="headerlink" title="Flutter的优点"></a>Flutter的优点</h1><p>为什么这么多厂商使用flutter，根据我近段时间开发flutter的新得体会，列出几点。</p>
+<h2 id="1-跨平台，渲染一致，一套代码，多端使用"><a href="#1-跨平台，渲染一致，一套代码，多端使用" class="headerlink" title="1.跨平台，渲染一致，一套代码，多端使用"></a>1.跨平台，渲染一致，一套代码，多端使用</h2><p>首先是他的跨平台真的做的很好，不同平台渲染一致性很高，真正做到了一套代码多端运行，而不是像之前的跨端方案 一套代码 多端修改适配。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9c2eba4b993c?w=2458&amp;h=1282&amp;f=png&amp;s=1010956" alt></p>
+<p>这个图是雪糕应用在不同系统下的样子，UI几乎无差别，开发的时候不需要关注平台，android和ios的适配基本没花多长时间。</p>
+<p>当时令我眼前一亮的一点是他竟然能把这种一致性延申到了web上。因为当时开发的时候，flutter还是1.7版本，官方还不支持web h5, 所以对能否做出web版没抱任何希望，当时想的是单独开发一套出h5版, 后来客户端开发完后，尝试性用内测分支flutter_web 适配了下，发现还是可以用的。UI体验与客户端差不多，除了有些bug与卡顿。所以既然web也能支持，我想他们之后说的桌面端和嵌入式也很期待。现在1.9 版本 web已经支持了，不用像我开发时，做大量的安装和适配工作了。</p>
+<p>另外值得一提的是桌面版，在今年（2020）我们桌面版选型时，我试用了下flutter桌面版的生成，只需升级下flutter版本，没有任何代码改动就打出了flutter桌面版，界面效果很优秀。后续会有个flutter桌面版的试用分析文章。</p>
+<blockquote>
+<p><a href="https://blog.dappwind.com/2020/03/17">https://blog.dappwind.com/2020/03/17</a></p>
+</blockquote>
+<h2 id="2-开发效率高"><a href="#2-开发效率高" class="headerlink" title="2.开发效率高"></a>2.开发效率高</h2><p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9c95b5c00b7e?w=2252&amp;h=1234&amp;f=png&amp;s=612466" alt></p>
+<p>之前客户端同学一直羡慕我们前端同学开发效率高，代码改动后只要保存下，就能直接在界面上看到效果。 flutter也支持热重载这个功能。可以提高开发效率。另外就是编辑器的代码补全，每个组件代码前面都有个一个电灯泡，可以直接选择添加哪些代码片段，并不是简单的代码很智能，减少了手动敲重复代码，提高开发效率。</p>
+<h2 id="3-UI可深度定制，"><a href="#3-UI可深度定制，" class="headerlink" title="3.UI可深度定制，"></a>3.UI可深度定制，</h2><p>第三点就是UI可深度定制，性能媲美原生应用，可以通过下面这个视频看一下。</p>
+<video id="video" controls preload="false"><br><source id="mp4" src="https://flutter.dev/videos/Filters.mp4" type="video/mp4"><br></video>
+
+<h1 id="Flutter-的优点是怎么实现的"><a href="#Flutter-的优点是怎么实现的" class="headerlink" title="Flutter 的优点是怎么实现的"></a>Flutter 的优点是怎么实现的</h1><p>为什么会有这些优点，我们简单看一下flutter的框架，底层不调用原生组件，都是用skia引擎画出，所以能有很高的跨平台一致性，UI深度定制性，性能好。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9ce6c87b25d5?w=2392&amp;h=1358&amp;f=png&amp;s=260090" alt></p>
+<h2 id="Dart语言"><a href="#Dart语言" class="headerlink" title="Dart语言"></a>Dart语言</h2><p>而开发热重载则是Dart语言的一个优势。Dart支持两种模式</p>
+<p><code>JIT</code> (Just-In-Time - 实时编译)  解释模式 </p>
+<p><code>AOT</code> (Ahead-Of-Time - 预先编译)  编译模式</p>
+<p>debug模式下使用的是解释模式，跟js一样，所以支持热重载，发布打包时，会先编译，性能比js好得多。所以也是flutter性能媲美原生的原因。</p>
+<p>1.Dart 的性能更好。</p>
+<p>Dart在 JIT模式下，速度与 JavaScript基本持平。但是 Dart支持 AOT，当以 AOT模式运行时，JavaScript便远远追不上了。速度的提升对高帧率下的视图数据计算很有帮助。</p>
+<p>2.Native Binding。</p>
+<p>在 Android上，v8的 Native Binding可以很好地实现，但是 iOS上的 JavaScriptCore不可以，所以如果使用 JavaScript，Flutter 基础框架的代码模式就很难统一了。而 Dart的 Native Binding可以很好地通过 Dart Lib实现。</p>
+<p>3.Dart是类型安全的语言，拥有完善的包管理和诸多特性。</p>
+<p>Google召集了如此多个编程语言界的设计专家开发出这样一门语言，旨在取代 JavaScript，所以 Fuchsia OS内置了 Dart。Dart可以作为 embedded lib嵌入应用，而不用只能随着系统升级才能获得更新，这也是优势之一。</p>
+<p>4.Dart 2.5 支持了ML代码补全，调用C语言等功能</p>
+<h2 id="Flutter项目结构"><a href="#Flutter项目结构" class="headerlink" title="Flutter项目结构"></a>Flutter项目结构</h2><p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9d55e4fcbd66?w=2068&amp;h=1300&amp;f=png&amp;s=359923" alt></p>
+<h1 id="Flutter编程思想"><a href="#Flutter编程思想" class="headerlink" title="Flutter编程思想"></a>Flutter编程思想</h1><p>一切皆 Widget<br>Widget 是 Flutter 应用用户界面的基本构建单元，每个 widget 都与最终的用户界面的展示紧密相关。不同于其他框架和平台 —— 将视图 (views)、视图控制器 (view controllers)、布局 (layouts) 等其他属性分开，Flutter 拥有统一的对象模型：widget。<br>一个 widget 可以定义：</p>
+<ul>
+<li>一个结构元素（比如一个按钮或者菜单）</li>
+<li>一个风格元素（比如一个字体或者配色方案）</li>
+<li>布局的一个方面（比如 padding）</li>
+<li>等等……</li>
+</ul>
+<p>是声明式UI，一切都是widget,  一切都是小组件。<br>触摸操作也是组件。</p>
+<p>下面是一个widget组件的例子，雪糕里有很多不同的app图标，大小，种类，有无边框会有些区别。所以封装成了组件，暴露参数 为 app内容，宽度，有无边框。</p>
+<p>边框和背景图为最外层widget，里面有个文字的widegt.</p>
+<p>这就是全部的icon组件代码。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9d7946119db7?w=2434&amp;h=1250&amp;f=png&amp;s=634066" alt></p>
+<h1 id="Flutter-插件-包管理"><a href="#Flutter-插件-包管理" class="headerlink" title="Flutter 插件/包管理"></a>Flutter 插件/包管理</h1><p>类似前端 npm , 我问了下客户端的同事，引用第三方的包时，需要直接上github上搜索，并手动下载。比较麻烦，这个pub.dev就采取了前端开发包管理的方式，是个单独的网站，直接搜索，然后添加到pubspec.yaml里面就行。会自动安装。</p>
+<p>雪糕用到的插件如下：<br><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9d882c227db5?w=1004&amp;h=622&amp;f=png&amp;s=120661" alt></p>
+<p>以分享插件为例<br><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9d94051341e5?w=2364&amp;h=1256&amp;f=png&amp;s=576998" alt></p>
+<h1 id="雪糕主要功能及其实现方式"><a href="#雪糕主要功能及其实现方式" class="headerlink" title="雪糕主要功能及其实现方式"></a>雪糕主要功能及其实现方式</h1><blockquote>
+<p>1.顶部动画及导航栏  -  NestedScrollView / headerSliverBuilder / SliverPersistentHeaderDelegate 画出</p>
+</blockquote>
+<blockquote>
+<p>2.网络请求及页面间数据通信 - http / JSON / event_bus</p>
+</blockquote>
+<blockquote>
+<p>3.应用内下载及安装 - android: flutter_downloader &amp; path_provider /  iOS: url_launcher / web: dart open </p>
+</blockquote>
+<blockquote>
+<p>4.搜索功能 - SearchDelegate</p>
+</blockquote>
+<blockquote>
+<p>5.页面框架 - Scaffold / ListView</p>
+</blockquote>
+<blockquote>
+<p>6.封装组件 - 列表组件 / 卡片组件 / icon组件</p>
+</blockquote>
+<blockquote>
+<p>7.判断系统环境 - device_info</p>
+</blockquote>
+<p>这个地方罗列了一些主要的效果与功能，我们选取两个来具体说下，</p>
+<h2 id="首先是顶部动画和导航栏"><a href="#首先是顶部动画和导航栏" class="headerlink" title="首先是顶部动画和导航栏"></a>首先是顶部动画和导航栏</h2><video id="video" controls preload="false"><br><source id="mp4" src="https://blogyu.oss-cn-beijing.aliyuncs.com/video/%E9%A1%B6%E9%83%A8480.mov" type="video/mp4"><br></video>
+
+<p>我们的设计师设计了非常好看的顶部效果和导航栏样式，使用flutter自带的materal design的UI组件不能满足需求。导航栏背景是个可以动的图片背景，一直延伸到系统状态栏。并且顶部滑动效果，背景多个元素是差速移动的，另外，卡片是压在背景上方，上滑到某一位置后，卡片开始被收到状态栏背景下方。并且还要适配机型与屏幕。</p>
+<p>由于刚开始用flutter, 看到设计稿时感觉flutter做不到这个效果，完全没有头绪，后来弄了好几天，换了3个方案，基本实现了这个动效</p>
+<p>没有用flutter提供的appbar 相当于自己画了一个。因为flutter有stack层叠的概念，将差速移动的各个元素放在不同图层，每个的定位都加一个运动曲线公式。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9e07193c9a6f?w=2520&amp;h=1418&amp;f=png&amp;s=1047284" alt></p>
+<p>代码大概结构如下 stack 元素  堆叠了 5个 positioned 图层</p>
+<p>开发时还遇到了 listview滚动与appbanner 滚动事件冲突的问题，也是花费了些时间解决，又遇到类似问题的同学可以参考下git代码。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9e10ca38ed06?w=1069&amp;h=1230&amp;f=png&amp;s=337945" alt></p>
+<h2 id="另外介绍下雪糕内安装app的实现方式"><a href="#另外介绍下雪糕内安装app的实现方式" class="headerlink" title="另外介绍下雪糕内安装app的实现方式"></a>另外介绍下雪糕内安装app的实现方式</h2><p>安装app   ios 与 android很不一样，ios安装直接safari打开一个plist链接。所以用到了url_launcher 这个插件，他会打开链接进而进行安装。</p>
+<p>安卓需要先下载再安装，安卓下载涉及到队列数据库等等设置，可以参考flutter_downloader 的说明文档。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9e21446b4195?w=2126&amp;h=1140&amp;f=png&amp;s=785750" alt></p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9e2eaa2868c1?w=2378&amp;h=1016&amp;f=png&amp;s=606435" alt></p>
+<h1 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h1><p><img src="https://user-gold-cdn.xitu.io/2020/5/3/171d9e3560ed897e?w=2364&amp;h=1342&amp;f=png&amp;s=471426" alt></p>
+<h1 id="RN对比"><a href="#RN对比" class="headerlink" title="RN对比"></a>RN对比</h1><p>RN采用原生组件，与系统内的一致性强，但是ios跟android有些差异</p>
+<p>第三方包活跃</p>
+<p>RN list有些性能问题</p>
+<h1 id="Flutter遇到的问题"><a href="#Flutter遇到的问题" class="headerlink" title="Flutter遇到的问题"></a>Flutter遇到的问题</h1><p>1.SliverAppBar 与 scroll controler 冲突</p>
+<blockquote>
+<p>SliverAppBar will not collapse when ListView is scrolled<br>来自 <a href="https://github.com/flutter/flutter/issues/26243" target="_blank" rel="noopener">https://github.com/flutter/flutter/issues/26243</a> </p>
+</blockquote>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/46817189/sliverappbar-and-listview-with-controller/46853315#46853315" target="_blank" rel="noopener">https://stackoverflow.com/questions/46817189/sliverappbar-and-listview-with-controller/46853315#46853315</a></p>
+</blockquote>
+<p>Listview tabbarview 在 customscrollview 中<br>List 滚动不会引起 appbar滚动</p>
+<h3 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h3><p>NestedScrollView 中的 headerSliverBuilder</p>
+<p>NestedScrollView 不只可以用 <code>SliverAppBar</code> 还可以接受 <code>SliverPersistentHeader</code></p>
+<p>而 <code>SliverPersistentHeader</code> 中可处理滑动，结合<code>NotificationListener</code>可实现滚动效果。</p>
+<p>2.Future 异步 需在页面切换走后 停止，否则setState报错</p>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/49340116/setstate-called-after-dispose" target="_blank" rel="noopener">https://stackoverflow.com/questions/49340116/setstate-called-after-dispose</a><br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span>.mounted)&#123;</span><br><span class="line"> setState(()&#123;</span><br><span class="line">  <span class="comment">//Your state change code goes here</span></span><br><span class="line"> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>3.Text hero </p>
+<p>颜色会变红，字体会变，会换行</p>
+<blockquote>
+<p><a href="https://github.com/flutter/flutter/issues/10246" target="_blank" rel="noopener">https://github.com/flutter/flutter/issues/10246</a><br><a href="https://github.com/flutter/flutter/issues/30647" target="_blank" rel="noopener">https://github.com/flutter/flutter/issues/30647</a></p>
+</blockquote>
+<p>Text hero<br>设置颜色、设置字体、设置宽度，依旧效果不太好。</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2020/03/17/index.html" class="prev">PREV</a><a href="/2019/06/24/index.html" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'yuxizhe';
+var disqus_identifier = '2019/09/01/';
+var disqus_title = 'Flutter在雪球应用广场的实践';
+var disqus_url = 'https://blog.dappwind.com/2019/09/01/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//yuxizhe.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2020 <a href="https://blog.dappwind.com">DappWind</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script src="https://cdn.jsdelivr.net/gh/yuxizhe/cdn@2.3.1/lib/ga.js"></script><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-101680273-1', {'siteSpeedSampleRate': 100});
+ga('send', 'pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0a04d42963922469197b22ffadf59a50";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script></body></html>
